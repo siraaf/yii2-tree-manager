@@ -41,8 +41,6 @@ class m230416_200116_tree extends Migration
             'selected' => $this->boolean()->notNull()->defaultValue(false),
             'disabled' => $this->boolean()->notNull()->defaultValue(false),
             'readonly' => $this->boolean()->notNull()->defaultValue(false),
-            'visible' => $this->boolean()->notNull()->defaultValue(true),
-            'collapsed' => $this->boolean()->notNull()->defaultValue(false),
         ], $tableOptions);
         $this->createIndex('tree_NK1', self::TABLE_NAME, 'root');
         $this->createIndex('tree_NK2', self::TABLE_NAME, 'lft');

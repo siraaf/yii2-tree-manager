@@ -1094,7 +1094,7 @@ HTML;
             /**
              * @var Tree $node
              */
-            if (!$this->isAdmin && !$node->isVisible() || !$this->showInactive && !$node->isActive()) {
+            if (!$this->isAdmin || !$this->showInactive && !$node->isActive()) {
                 continue;
             }
             /** @noinspection PhpUndefinedVariableInspection */
@@ -1147,14 +1147,8 @@ HTML;
             if (!$isChild) {
                 $css[] = 'kv-parent ';
             }
-            if (!$node->isVisible() && $this->isAdmin) {
-                $css[] = 'kv-invisible';
-            }
             if ($this->showCheckbox && $node->isSelected()) {
                 $css[] = 'kv-selected ';
-            }
-            if ($node->isCollapsed()) {
-                $css[] = 'kv-collapsed ';
             }
             if ($node->isDisabled()) {
                 $css[] = 'kv-disabled ';

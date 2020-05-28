@@ -30,8 +30,6 @@ trait TreeTrait
         'selected',
         'disabled',
         'readonly',
-        'visible',
-        'collapsed',
     ];
 
     /**
@@ -41,7 +39,6 @@ trait TreeTrait
         'selected',
         'disabled',
         'readonly',
-        'collapsed',
     ];
 
     /**
@@ -173,16 +170,6 @@ trait TreeTrait
     }
 
     /**
-     * Validate if the node is visible
-     *
-     * @return boolean
-     */
-    public function isVisible()
-    {
-        return $this->parse('visible');
-    }
-
-    /**
      * Validate if the node is readonly
      *
      * @return boolean
@@ -200,16 +187,6 @@ trait TreeTrait
     public function isDisabled()
     {
         return $this->parse('disabled');
-    }
-
-    /**
-     * Validate if the node is collapsed
-     *
-     * @return boolean
-     */
-    public function isCollapsed()
-    {
-        return $this->parse('collapsed');
     }
 
     /**
@@ -343,8 +320,6 @@ trait TreeTrait
             'selected' => Yii::t('kvtree', 'Selected'),
             'disabled' => Yii::t('kvtree', 'Disabled'),
             'readonly' => Yii::t('kvtree', 'Read Only'),
-            'visible' => Yii::t('kvtree', 'Visible'),
-            'collapsed' => Yii::t('kvtree', 'Collapsed'),
         ];
         if (!$treeAttribute) {
             $labels[$treeAttribute] = Yii::t('kvtree', 'Root');

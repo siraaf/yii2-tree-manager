@@ -25,8 +25,6 @@ use yii\db\ActiveRecord;
  * @property boolean $selected
  * @property boolean $disabled
  * @property boolean $readonly
- * @property boolean $visible
- * @property boolean $collapsed
  *
  * @method initDefaults()
  * @method makeRoot()

@@ -31,10 +31,6 @@ CREATE TABLE tbl_tree (
     COMMENT 'Whether the node is enabled',
     readonly      TINYINT(1)   NOT NULL DEFAULT FALSE
     COMMENT 'Whether the node is read only (unlike disabled - will allow toolbar actions)',
-    visible       TINYINT(1)   NOT NULL DEFAULT TRUE
-    COMMENT 'Whether the node is visible',
-    collapsed     TINYINT(1)   NOT NULL DEFAULT FALSE
-    COMMENT 'Whether the node is collapsed by default',
     KEY tbl_tree_NK1 (root),
     KEY tbl_tree_NK2 (lft),
     KEY tbl_tree_NK3 (rgt),
