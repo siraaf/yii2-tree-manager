@@ -24,10 +24,6 @@ class m230416_200116_tree extends Migration
      */
     public function up()
     {
-        $tableOptions = null;
-        if ($this->db->driverName === 'mysql') {
-            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
-        }
         $this->createTable(self::TABLE_NAME, [
             'id' => $this->bigPrimaryKey(),
             'root' => $this->integer(),
@@ -38,7 +34,7 @@ class m230416_200116_tree extends Migration
             'icon' => $this->string(255),
             'icon_type' => $this->smallInteger(1)->notNull()->defaultValue(1),
             'active' => $this->boolean()->notNull()->defaultValue(true),
-        ], $tableOptions);
+        ]);
         $this->createIndex('tree_NK1', self::TABLE_NAME, 'root');
         $this->createIndex('tree_NK2', self::TABLE_NAME, 'lft');
         $this->createIndex('tree_NK3', self::TABLE_NAME, 'rgt');
