@@ -327,7 +327,6 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
                 <?= $form->field($node, 'visible')->checkbox($cbxOptions) ?>
                 <?= $form->field($node, 'readonly')->checkbox($cbxOptions) ?>
                 <?= $form->field($node, 'disabled')->checkbox($cbxOptions) ?>
-                <?= $form->field($node, 'child_allowed')->checkbox($cbxOptions) ?>
             </div>
             <div class="col-sm-4">
                 <?= $form->field($node, 'selected')->checkbox($cbxOptions) ?>

@@ -2,7 +2,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015 - 2019
  * @package yii2-tree-manager
  * @version 1.1.3
- * 
+ *
  * Tree View Validation Module.
  *
  * Author: Kartik Visweswaran
@@ -315,9 +315,6 @@
             if (!$sel.data('movable-r')) {
                 self.disable('moveR');
             }
-            if (!$sel.data('child-allowed')) {
-                self.disable('create');
-            }
             self.parseParentFlag(key);
         },
         parseParentFlag: function (key) {
@@ -605,11 +602,6 @@
             }
             if ($nodeText.length === 0 || $node.hasClass('kv-empty')) {
                 self.dialogLib.alert(msg.invalidCreateNode);
-                return;
-            }
-            if (!$node.attr('data-child-allowed')) {
-                // noinspection JSUnresolvedVariable
-                self.dialogLib.alert(msg.noChildAllowed);
                 return;
             }
             self.$toolbar.find('.kv-' + self.btns.trash).removeAttr('disabled');

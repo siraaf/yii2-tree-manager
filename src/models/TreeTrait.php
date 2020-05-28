@@ -38,7 +38,6 @@ trait TreeTrait
         'movable_l',
         'removable',
         'removable_all',
-        'child_allowed',
     ];
 
     /**
@@ -254,16 +253,6 @@ trait TreeTrait
     }
 
     /**
-     * Validate if the node can have children
-     *
-     * @return boolean
-     */
-    public function isChildAllowed()
-    {
-        return $this->parse('child_allowed');
-    }
-
-    /**
      * Activates a node (for undoing a soft deletion scenario)
      *
      * @param boolean $currNode whether to update the current node value also
@@ -402,7 +391,6 @@ trait TreeTrait
             'movable_r' => Yii::t('kvtree', 'Movable Right'),
             'removable' => Yii::t('kvtree', 'Removable'),
             'removable_all' => Yii::t('kvtree', 'Removable (with children)'),
-            'child_allowed' => Yii::t('kvtree', 'Child Allowed'),
         ];
         if (!$treeAttribute) {
             $labels[$treeAttribute] = Yii::t('kvtree', 'Root');

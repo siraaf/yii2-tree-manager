@@ -880,7 +880,6 @@ HTML;
             'nodeRight' => Yii::t('kvtree', 'Already at right-most {node} in the hierarchy.', $p),
             'emptyNodeRemoved' => Yii::t('kvtree', 'The untitled {node} was removed.', $p),
             'selectNode' => Yii::t('kvtree', 'Select a {node} by clicking on one of the tree items.', $p),
-            'noChildAllowed' => Yii::t('kvtree', 'You cannot add children under this {node}.', $p),
             'nodeTitle' => $this->nodeTitle,
             'nodeTitlePlural' => $this->nodeTitlePlural,
         ];
@@ -1148,7 +1147,6 @@ HTML;
                 'data-movable-r' => static::parseBool($node->isMovable('r')),
                 'data-removable' => static::parseBool($node->isRemovable()),
                 'data-removable-all' => static::parseBool($node->isRemovableAll()),
-                'data-child-allowed' => static::parseBool($node->isChildAllowed()),
             ];
 
             $css = [];

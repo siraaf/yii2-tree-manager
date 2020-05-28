@@ -175,17 +175,7 @@ class NodeController extends Controller
                 $node->makeRoot();
             } else {
                 $parent = $treeClass::findOne($parentKey);
-                if ($parent->isChildAllowed()) {
-                    $node->appendTo($parent);
-                } else {
-                    $errorMsg = Yii::t('kvtree', 'You cannot add children under this {node}.', $nodeTitles);
-                    if (Yii::$app->has('session')) {
-                        $session->setFlash('error', $errorMsg);
-                    } else {
-                        throw new ErrorException("Error saving {node}!\n{$errorMsg}", $nodeTitles);
-                    }
-                    return $this->redirect($currUrl);
-                }
+                $node->appendTo($parent);
             }
         }
         if ($node->save()) {

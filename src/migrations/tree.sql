@@ -3,7 +3,7 @@
  * @package yii2-tree-manager
  * @version 1.1.3
  */
- 
+
 DROP TABLE IF EXISTS tbl_tree;
 
 CREATE TABLE tbl_tree (
@@ -47,8 +47,6 @@ CREATE TABLE tbl_tree (
     COMMENT 'Whether the node is removable (any children below will be moved as siblings before deletion)',
     removable_all TINYINT(1)   NOT NULL DEFAULT FALSE
     COMMENT 'Whether the node is removable along with descendants',
-    child_allowed TINYINT(1)   NOT NULL DEFAULT TRUE
-    COMMENT 'Whether to allow adding children to the node',
     KEY tbl_tree_NK1 (root),
     KEY tbl_tree_NK2 (lft),
     KEY tbl_tree_NK3 (rgt),
