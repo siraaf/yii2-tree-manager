@@ -17,7 +17,7 @@ CREATE TABLE tbl_tree (
     COMMENT 'Nested set right property',
     lvl           SMALLINT(5)  NOT NULL
     COMMENT 'Nested set level / depth',
-    name          VARCHAR(60)  NOT NULL
+    name          VARCHAR(255)  NOT NULL
     COMMENT 'The tree node name / label',
     icon          VARCHAR(255)          DEFAULT NULL
     COMMENT 'The icon to use for the node',
