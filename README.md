@@ -92,7 +92,7 @@ Alternatively, you can execute the SQL script to generate your DB structure. Cop
 
 ### Step 2: Setup Model
 
-Create your model for storing the tree structure extending `kartik\tree\models\Tree` class. You can alternatively build your own model extending from `yii\db\ActiveRecord` but modify it to use the `kartik\tree\models\TreeTrait`. You must provide the table name in the model. Optionally you can add rules, or edit the various methods like `isVisible`, `isDisabled` etc. to identify allowed flags for nodes.
+Create your model for storing the tree structure extending `kartik\tree\models\Tree` class. You can alternatively build your own model extending from `yii\db\ActiveRecord` but modify it to use the `kartik\tree\models\TreeTrait`. You must provide the table name in the model. to identify allowed flags for nodes.
 
 So when extending from the `\kartik\tree\models\Tree`, you can set it like below:
 

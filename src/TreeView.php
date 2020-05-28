@@ -1123,7 +1123,6 @@ HTML;
                 'data-lft' => $nodeLeft,
                 'data-rgt' => $nodeRight,
                 'data-lvl' => $nodeDepth,
-                'data-disabled' => static::parseBool($node->isDisabled()),
             ];
 
             $css = [];
@@ -1132,9 +1131,6 @@ HTML;
             }
             if ($this->showCheckbox) {
                 $css[] = 'kv-selected ';
-            }
-            if ($node->isDisabled()) {
-                $css[] = 'kv-disabled ';
             }
             if (!$node->isActive()) {
                 $css[] = 'kv-inactive ';

@@ -27,14 +27,12 @@ trait TreeTrait
      */
     public static $boolAttribs = [
         'active',
-        'disabled',
     ];
 
     /**
      * @var array the default list of boolean attributes with initial value = `false`
      */
     public static $falseAttribs = [
-        'disabled',
     ];
 
     /**
@@ -153,16 +151,6 @@ trait TreeTrait
     public function isActive()
     {
         return $this->parse('active');
-    }
-
-    /**
-     * Validate if the node is disabled
-     *
-     * @return boolean
-     */
-    public function isDisabled()
-    {
-        return $this->parse('disabled');
     }
 
     /**
@@ -293,7 +281,6 @@ trait TreeTrait
             $iconAttribute => Yii::t('kvtree', 'Icon'),
             $iconTypeAttribute => Yii::t('kvtree', 'Icon Type'),
             'active' => Yii::t('kvtree', 'Active'),
-            'disabled' => Yii::t('kvtree', 'Disabled'),
         ];
         if (!$treeAttribute) {
             $labels[$treeAttribute] = Yii::t('kvtree', 'Root');

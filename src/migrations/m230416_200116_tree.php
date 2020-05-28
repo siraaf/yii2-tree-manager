@@ -38,7 +38,6 @@ class m230416_200116_tree extends Migration
             'icon' => $this->string(255),
             'icon_type' => $this->smallInteger(1)->notNull()->defaultValue(1),
             'active' => $this->boolean()->notNull()->defaultValue(true),
-            'disabled' => $this->boolean()->notNull()->defaultValue(false),
         ], $tableOptions);
         $this->createIndex('tree_NK1', self::TABLE_NAME, 'root');
         $this->createIndex('tree_NK2', self::TABLE_NAME, 'lft');

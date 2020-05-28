@@ -178,9 +178,6 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
             $name = $parent->getBreadcrumbs($depth, $glue, null) . $glue . $name;
         }
     }
-    if ($node->isDisabled()) {
-        $inputOpts['disabled'] = true;
-    }
     if ($node->isLeaf()) {
         $flagOptions['disabled'] = true;
     }
