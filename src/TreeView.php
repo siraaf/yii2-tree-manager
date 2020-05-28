@@ -1140,7 +1140,6 @@ HTML;
                 'data-rgt' => $nodeRight,
                 'data-lvl' => $nodeDepth,
                 'data-disabled' => static::parseBool($node->isDisabled()),
-                'data-readonly' => static::parseBool($node->isReadonly()),
             ];
 
             $css = [];

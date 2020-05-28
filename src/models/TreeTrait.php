@@ -29,7 +29,6 @@ trait TreeTrait
         'active',
         'selected',
         'disabled',
-        'readonly',
     ];
 
     /**
@@ -38,7 +37,6 @@ trait TreeTrait
     public static $falseAttribs = [
         'selected',
         'disabled',
-        'readonly',
     ];
 
     /**
@@ -167,16 +165,6 @@ trait TreeTrait
     public function isSelected()
     {
         return $this->parse('selected', false);
-    }
-
-    /**
-     * Validate if the node is readonly
-     *
-     * @return boolean
-     */
-    public function isReadonly()
-    {
-        return $this->parse('readonly');
     }
 
     /**
@@ -319,7 +307,6 @@ trait TreeTrait
             'active' => Yii::t('kvtree', 'Active'),
             'selected' => Yii::t('kvtree', 'Selected'),
             'disabled' => Yii::t('kvtree', 'Disabled'),
-            'readonly' => Yii::t('kvtree', 'Read Only'),
         ];
         if (!$treeAttribute) {
             $labels[$treeAttribute] = Yii::t('kvtree', 'Root');

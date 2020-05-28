@@ -38,7 +38,6 @@ An enhanced tree management module from Krajee with tree node selection and mani
 - **active:** whether a tree node is active (if soft delete is enabled, the tree node will be just inactivated instead of deleting from database).
 - **selected:** whether a tree node is selected by default.
 - **disabled:** disables a tree node for editing or reorder
-- **readonly:** a read only tree node that prevents editing, but can be reordered or moved up/down
  
 The following important PHP classes are available with this module:
 

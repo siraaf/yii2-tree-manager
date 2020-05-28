@@ -24,7 +24,6 @@ use yii\db\ActiveRecord;
  * @property boolean $active
  * @property boolean $selected
  * @property boolean $disabled
- * @property boolean $readonly
  *
  * @method initDefaults()
  * @method makeRoot()

@@ -178,9 +178,6 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
             $name = $parent->getBreadcrumbs($depth, $glue, null) . $glue . $name;
         }
     }
-    if ($node->isReadonly()) {
-        $inputOpts['readonly'] = true;
-    }
     if ($node->isDisabled()) {
         $inputOpts['disabled'] = true;
     }
@@ -288,7 +285,7 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
                     'class' => 'form-control',
                     'style' => 'height:135px; overflow-y:auto',
                     'custom' => true,
-                    'disabled' => !empty($inputOpts['readonly']) || !empty($inputOpts['disabled']),
+                    'disabled' => !empty($inputOpts['disabled']),
                 ]) ?>
             </div>
         </div>
@@ -324,7 +321,6 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
         <div class="row">
             <div class="col-sm-6">
                 <?= $form->field($node, 'active')->checkbox($cbxOptions) ?>
-                <?= $form->field($node, 'readonly')->checkbox($cbxOptions) ?>
                 <?= $form->field($node, 'disabled')->checkbox($cbxOptions) ?>
             </div>
             <div class="col-sm-6">
