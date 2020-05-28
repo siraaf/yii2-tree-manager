@@ -322,22 +322,16 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
          */
         ?>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <?= $form->field($node, 'active')->checkbox($cbxOptions) ?>
                 <?= $form->field($node, 'visible')->checkbox($cbxOptions) ?>
                 <?= $form->field($node, 'readonly')->checkbox($cbxOptions) ?>
                 <?= $form->field($node, 'disabled')->checkbox($cbxOptions) ?>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <?= $form->field($node, 'selected')->checkbox($cbxOptions) ?>
                 <?= $form->field($node, 'collapsed')->checkbox($flagOptions) ?>
                 <?= $form->field($node, 'removable')->checkbox($cbxOptions) ?>
-            </div>
-            <div class="col-sm-4">
-                <?= $form->field($node, 'movable_u')->checkbox($cbxOptions) ?>
-                <?= $form->field($node, 'movable_d')->checkbox($cbxOptions) ?>
-                <?= $form->field($node, 'movable_l')->checkbox($cbxOptions) ?>
-                <?= $form->field($node, 'movable_r')->checkbox($cbxOptions) ?>
             </div>
         </div>
 

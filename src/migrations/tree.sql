@@ -35,14 +35,6 @@ CREATE TABLE tbl_tree (
     COMMENT 'Whether the node is visible',
     collapsed     TINYINT(1)   NOT NULL DEFAULT FALSE
     COMMENT 'Whether the node is collapsed by default',
-    movable_u     TINYINT(1)   NOT NULL DEFAULT TRUE
-    COMMENT 'Whether the node is movable one position up',
-    movable_d     TINYINT(1)   NOT NULL DEFAULT TRUE
-    COMMENT 'Whether the node is movable one position down',
-    movable_l     TINYINT(1)   NOT NULL DEFAULT TRUE
-    COMMENT 'Whether the node is movable to the left (from sibling to parent)',
-    movable_r     TINYINT(1)   NOT NULL DEFAULT TRUE
-    COMMENT 'Whether the node is movable to the right (from sibling to child)',
     removable     TINYINT(1)   NOT NULL DEFAULT TRUE
     COMMENT 'Whether the node is removable (any children below will be moved as siblings before deletion)',
     KEY tbl_tree_NK1 (root),

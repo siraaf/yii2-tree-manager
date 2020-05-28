@@ -303,18 +303,6 @@
                 ($sel.hasClass('kv-parent'))) {
                 self.disable('trash');
             }
-            if (!$sel.data('movable-u')) {
-                self.disable('moveU');
-            }
-            if (!$sel.data('movable-d')) {
-                self.disable('moveD');
-            }
-            if (!$sel.data('movable-l')) {
-                self.disable('moveL');
-            }
-            if (!$sel.data('movable-r')) {
-                self.disable('moveR');
-            }
             self.parseParentFlag(key);
         },
         parseParentFlag: function (key) {

@@ -32,10 +32,6 @@ trait TreeTrait
         'readonly',
         'visible',
         'collapsed',
-        'movable_u',
-        'movable_d',
-        'movable_r',
-        'movable_l',
         'removable',
     ];
 
@@ -218,19 +214,6 @@ trait TreeTrait
     }
 
     /**
-     * Validate if the node is movable
-     *
-     * @param string $dir the direction, one of 'u', 'd', 'l', or 'r'
-     *
-     * @return boolean
-     */
-    public function isMovable($dir)
-    {
-        $attr = "movable_{$dir}";
-        return $this->parse($attr);
-    }
-
-    /**
      * Validate if the node is removable
      *
      * @return boolean
@@ -373,10 +356,6 @@ trait TreeTrait
             'readonly' => Yii::t('kvtree', 'Read Only'),
             'visible' => Yii::t('kvtree', 'Visible'),
             'collapsed' => Yii::t('kvtree', 'Collapsed'),
-            'movable_u' => Yii::t('kvtree', 'Movable Up'),
-            'movable_d' => Yii::t('kvtree', 'Movable Down'),
-            'movable_l' => Yii::t('kvtree', 'Movable Left'),
-            'movable_r' => Yii::t('kvtree', 'Movable Right'),
             'removable' => Yii::t('kvtree', 'Removable'),
         ];
         if (!$treeAttribute) {

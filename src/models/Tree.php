@@ -27,10 +27,6 @@ use yii\db\ActiveRecord;
  * @property boolean $readonly
  * @property boolean $visible
  * @property boolean $collapsed
- * @property boolean $movable_u
- * @property boolean $movable_d
- * @property boolean $movable_l
- * @property boolean $movable_r
  * @property boolean $removable
  *
  * @method initDefaults()

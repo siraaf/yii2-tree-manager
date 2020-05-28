@@ -1141,10 +1141,6 @@ HTML;
                 'data-lvl' => $nodeDepth,
                 'data-disabled' => static::parseBool($node->isDisabled()),
                 'data-readonly' => static::parseBool($node->isReadonly()),
-                'data-movable-u' => static::parseBool($node->isMovable('u')),
-                'data-movable-d' => static::parseBool($node->isMovable('d')),
-                'data-movable-l' => static::parseBool($node->isMovable('l')),
-                'data-movable-r' => static::parseBool($node->isMovable('r')),
                 'data-removable' => static::parseBool($node->isRemovable()),
             ];
 

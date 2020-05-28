@@ -43,10 +43,6 @@ class m230416_200116_tree extends Migration
             'readonly' => $this->boolean()->notNull()->defaultValue(false),
             'visible' => $this->boolean()->notNull()->defaultValue(true),
             'collapsed' => $this->boolean()->notNull()->defaultValue(false),
-            'movable_u' => $this->boolean()->notNull()->defaultValue(true),
-            'movable_d' => $this->boolean()->notNull()->defaultValue(true),
-            'movable_l' => $this->boolean()->notNull()->defaultValue(true),
-            'movable_r' => $this->boolean()->notNull()->defaultValue(true),
             'removable' => $this->boolean()->notNull()->defaultValue(true),
         ], $tableOptions);
         $this->createIndex('tree_NK1', self::TABLE_NAME, 'root');

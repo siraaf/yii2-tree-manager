@@ -330,19 +330,13 @@ class NodeController extends Controller
          */
         $nodeFrom = $treeClass::findOne($idFrom);
         $nodeTo = $treeClass::findOne($idTo);
-        $isMovable = $nodeFrom->isMovable($dir);
-        $errorMsg = $isMovable ?
-            Yii::t('kvtree', 'Error while moving the {node}. Please try again later.', $nodeTitles) :
-            Yii::t('kvtree', 'The selected {node} cannot be moved.', $nodeTitles);
-        $callback = function () use ($dir, $parsedData, $isMovable, $nodeFrom, $nodeTo, $nodeTitles) {
+        $errorMsg = Yii::t('kvtree', 'Error while moving the {node}. Please try again later.', $nodeTitles);
+        $callback = function () use ($dir, $parsedData, $nodeFrom, $nodeTo, $nodeTitles) {
             $out = $parsedData['out'];
             $oldHash = $parsedData['oldHash'];
             $newHash = $parsedData['newHash'];
             if (!empty($nodeFrom) && !empty($nodeTo)) {
                 TreeSecurity::checkSignature('move', $oldHash, $newHash);
-                if (!$isMovable || ($dir !== 'u' && $dir !== 'd' && $dir !== 'l' && $dir !== 'r')) {
-                    return false;
-                }
                 if ($dir === 'r') {
                     $nodeFrom->appendTo($nodeTo);
                 } else {
