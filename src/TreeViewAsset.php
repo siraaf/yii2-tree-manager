@@ -29,7 +29,11 @@ class TreeViewAsset extends AssetBundle
         ]);
         $this->setSourcePath(__DIR__ . '/assets');
         $this->setupAssets('js', ['js/kv-tree']);
-        $this->setupAssets('css', ['css/kv-tree']);
+        if (in_array(\Yii::$app->language, ['fa', 'ar'])) {
+            $this->setupAssets('css', ['css/kv-tree-rtl']);
+        } else {
+            $this->setupAssets('css', ['css/kv-tree']);
+        }
         parent::init();
     }
 }
