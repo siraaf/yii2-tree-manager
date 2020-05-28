@@ -32,7 +32,6 @@ use yii\db\ActiveRecord;
  * @property boolean $movable_l
  * @property boolean $movable_r
  * @property boolean $removable
- * @property boolean $removable_all
  *
  * @method initDefaults()
  * @method makeRoot()

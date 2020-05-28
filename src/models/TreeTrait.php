@@ -37,7 +37,6 @@ trait TreeTrait
         'movable_r',
         'movable_l',
         'removable',
-        'removable_all',
     ];
 
     /**
@@ -48,7 +47,6 @@ trait TreeTrait
         'disabled',
         'readonly',
         'collapsed',
-        'removable_all',
     ];
 
     /**
@@ -243,16 +241,6 @@ trait TreeTrait
     }
 
     /**
-     * Validate if the node is removable with descendants
-     *
-     * @return boolean
-     */
-    public function isRemovableAll()
-    {
-        return $this->parse('removable_all');
-    }
-
-    /**
      * Activates a node (for undoing a soft deletion scenario)
      *
      * @param boolean $currNode whether to update the current node value also
@@ -268,25 +256,25 @@ trait TreeTrait
         $this->nodeActivationErrors = [];
         $module = TreeView::module();
         extract($module->dataStructure);
-        if ($this->isRemovableAll()) {
-            /** @noinspection PhpUndefinedMethodInspection */
-            $children = $this->children()->all();
-            foreach ($children as $child) {
-                /**
-                 * @var Tree $child
-                 */
-                $child->active = true;
-                if (!$child->save()) {
-                    /** @noinspection PhpUndefinedFieldInspection */
-                    /** @noinspection PhpUndefinedVariableInspection */
-                    $this->nodeActivationErrors[] = [
-                        'id' => $child->$idAttribute,
-                        'name' => $child->$nameAttribute,
-                        'error' => $child->getFirstErrors(),
-                    ];
-                }
+
+        /** @noinspection PhpUndefinedMethodInspection */
+        $children = $this->children()->all();
+        foreach ($children as $child) {
+            /**
+             * @var Tree $child
+             */
+            $child->active = true;
+            if (!$child->save()) {
+                /** @noinspection PhpUndefinedFieldInspection */
+                /** @noinspection PhpUndefinedVariableInspection */
+                $this->nodeActivationErrors[] = [
+                    'id' => $child->$idAttribute,
+                    'name' => $child->$nameAttribute,
+                    'error' => $child->getFirstErrors(),
+                ];
             }
         }
+
         if ($currNode) {
             $this->active = true;
             if (!$this->save()) {
@@ -322,22 +310,22 @@ trait TreeTrait
             $this->nodeRemovalErrors = [];
             $module = TreeView::module();
             extract($module->dataStructure);
-            if ($this->isRemovableAll()) {
-                /** @noinspection PhpUndefinedMethodInspection */
-                $children = $this->children()->all();
-                foreach ($children as $child) {
-                    $child->active = false;
-                    if (!$child->save()) {
-                        /** @noinspection PhpUndefinedFieldInspection */
-                        /** @noinspection PhpUndefinedVariableInspection */
-                        $this->nodeRemovalErrors[] = [
-                            'id' => $child->$keyAttribute,
-                            'name' => $child->$nameAttribute,
-                            'error' => $child->getFirstErrors(),
-                        ];
-                    }
+
+            /** @noinspection PhpUndefinedMethodInspection */
+            $children = $this->children()->all();
+            foreach ($children as $child) {
+                $child->active = false;
+                if (!$child->save()) {
+                    /** @noinspection PhpUndefinedFieldInspection */
+                    /** @noinspection PhpUndefinedVariableInspection */
+                    $this->nodeRemovalErrors[] = [
+                        'id' => $child->$keyAttribute,
+                        'name' => $child->$nameAttribute,
+                        'error' => $child->getFirstErrors(),
+                    ];
                 }
             }
+
             if ($currNode) {
                 $this->active = false;
                 if (!$this->save()) {
@@ -354,7 +342,7 @@ trait TreeTrait
             return true;
         } else {
             /** @noinspection PhpUndefinedMethodInspection */
-            return $this->removable_all || $this->isRoot() && $this->children()->count() == 0 ?
+            return $this->isRoot() && $this->children()->count() == 0 ?
                 $this->deleteWithChildren() : $this->delete();
         }
     }
@@ -390,7 +378,6 @@ trait TreeTrait
             'movable_l' => Yii::t('kvtree', 'Movable Left'),
             'movable_r' => Yii::t('kvtree', 'Movable Right'),
             'removable' => Yii::t('kvtree', 'Removable'),
-            'removable_all' => Yii::t('kvtree', 'Removable (with children)'),
         ];
         if (!$treeAttribute) {
             $labels[$treeAttribute] = Yii::t('kvtree', 'Root');

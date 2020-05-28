@@ -1146,7 +1146,6 @@ HTML;
                 'data-movable-l' => static::parseBool($node->isMovable('l')),
                 'data-movable-r' => static::parseBool($node->isMovable('r')),
                 'data-removable' => static::parseBool($node->isRemovable()),
-                'data-removable-all' => static::parseBool($node->isRemovableAll()),
             ];
 
             $css = [];

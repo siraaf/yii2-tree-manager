@@ -332,7 +332,6 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
                 <?= $form->field($node, 'selected')->checkbox($cbxOptions) ?>
                 <?= $form->field($node, 'collapsed')->checkbox($flagOptions) ?>
                 <?= $form->field($node, 'removable')->checkbox($cbxOptions) ?>
-                <?= $form->field($node, 'removable_all')->checkbox($flagOptions) ?>
             </div>
             <div class="col-sm-4">
                 <?= $form->field($node, 'movable_u')->checkbox($cbxOptions) ?>

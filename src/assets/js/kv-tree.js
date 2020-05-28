@@ -300,7 +300,7 @@
                 self.enableToolbar();
             }
             if (!$sel.data('removable') || ($sel.hasClass('kv-inactive') && self.softDelete) ||
-                (!$sel.data('removableAll') && $sel.hasClass('kv-parent'))) {
+                ($sel.hasClass('kv-parent'))) {
                 self.disable('trash');
             }
             if (!$sel.data('movable-u')) {
@@ -403,9 +403,7 @@
                                 $cbx.val(false);
                                 $cbx.prop('checked', false);
                                 $h.addCss($node, 'kv-inactive');
-                                if ($node.data('removableAll')) {
-                                    $h.addCss($node.find('li'), 'kv-inactive');
-                                }
+                                $h.addCss($node.find('li'), 'kv-inactive');
                                 $h.addCss($node, 'kv-inactive');
                             } else {
                                 clearNode();

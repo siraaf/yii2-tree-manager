@@ -46,7 +46,6 @@ An enhanced tree management module from Krajee with tree node selection and mani
 - **movable_l:** whether a tree node is allowed to be movable left.
 - **movable_r:** whether a tree node is allowed to be movable right.
 - **removable:** whether a tree node is removable - will not be removed if children exist. If soft delete is enabled, then the node will be inactivated - else removed from database.
-- **removable_all:** whether a tree node is removable with children. If soft delete is enabled, then the node and its children will be inactivated - else removed from database.
  
 The following important PHP classes are available with this module:
 
