@@ -331,7 +331,6 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
             <div class="col-sm-6">
                 <?= $form->field($node, 'selected')->checkbox($cbxOptions) ?>
                 <?= $form->field($node, 'collapsed')->checkbox($flagOptions) ?>
-                <?= $form->field($node, 'removable')->checkbox($cbxOptions) ?>
             </div>
         </div>
 

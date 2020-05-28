@@ -299,7 +299,7 @@
             } else {
                 self.enableToolbar();
             }
-            if (!$sel.data('removable') || ($sel.hasClass('kv-inactive') && self.softDelete) ||
+            if (($sel.hasClass('kv-inactive') && self.softDelete) ||
                 ($sel.hasClass('kv-parent'))) {
                 self.disable('trash');
             }

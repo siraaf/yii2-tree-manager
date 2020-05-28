@@ -1141,7 +1141,6 @@ HTML;
                 'data-lvl' => $nodeDepth,
                 'data-disabled' => static::parseBool($node->isDisabled()),
                 'data-readonly' => static::parseBool($node->isReadonly()),
-                'data-removable' => static::parseBool($node->isRemovable()),
             ];
 
             $css = [];

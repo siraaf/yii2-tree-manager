@@ -41,7 +41,6 @@ An enhanced tree management module from Krajee with tree node selection and mani
 - **readonly:** a read only tree node that prevents editing, but can be reordered or moved up/down
 - **visible:** whether a tree node is visible by default.
 - **collapsed:** whether a tree node is collapsed by default.
-- **removable:** whether a tree node is removable - will not be removed if children exist. If soft delete is enabled, then the node will be inactivated - else removed from database.
  
 The following important PHP classes are available with this module:
 

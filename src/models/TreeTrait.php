@@ -32,7 +32,6 @@ trait TreeTrait
         'readonly',
         'visible',
         'collapsed',
-        'removable',
     ];
 
     /**
@@ -214,16 +213,6 @@ trait TreeTrait
     }
 
     /**
-     * Validate if the node is removable
-     *
-     * @return boolean
-     */
-    public function isRemovable()
-    {
-        return $this->parse('removable');
-    }
-
-    /**
      * Activates a node (for undoing a soft deletion scenario)
      *
      * @param boolean $currNode whether to update the current node value also
@@ -356,7 +345,6 @@ trait TreeTrait
             'readonly' => Yii::t('kvtree', 'Read Only'),
             'visible' => Yii::t('kvtree', 'Visible'),
             'collapsed' => Yii::t('kvtree', 'Collapsed'),
-            'removable' => Yii::t('kvtree', 'Removable'),
         ];
         if (!$treeAttribute) {
             $labels[$treeAttribute] = Yii::t('kvtree', 'Root');

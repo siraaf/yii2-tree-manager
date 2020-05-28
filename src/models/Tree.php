@@ -27,7 +27,6 @@ use yii\db\ActiveRecord;
  * @property boolean $readonly
  * @property boolean $visible
  * @property boolean $collapsed
- * @property boolean $removable
  *
  * @method initDefaults()
  * @method makeRoot()
