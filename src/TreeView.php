@@ -79,22 +79,6 @@ class TreeView extends Widget
      */
     const ICON_RAW = 2;
     /**
-     * Direction for moving selected node UP one level in the tree
-     */
-    const MOVE_UP = 'u';
-    /**
-     * Direction for moving selected node DOWN one level in the tree
-     */
-    const MOVE_DOWN = 'd';
-    /**
-     * Direction for moving selected node LEFT one level in the tree
-     */
-    const MOVE_LEFT = 'l';
-    /**
-     * Direction for moving selected node RIGHT one level in the tree
-     */
-    const MOVE_RIGHT = 'r';
-    /**
      * @var array the actions for managing, deleting, and moving the tree nodes. The keys must be one of 'manage',
      * 'save', 'remove', and 'move'. Defaults to:
      * ```
@@ -1146,7 +1130,7 @@ HTML;
             if (!$isChild) {
                 $css[] = 'kv-parent ';
             }
-            if ($this->showCheckbox && $node->isSelected()) {
+            if ($this->showCheckbox) {
                 $css[] = 'kv-selected ';
             }
             if ($node->isDisabled()) {

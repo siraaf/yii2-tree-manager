@@ -25,8 +25,6 @@ CREATE TABLE tbl_tree (
     COMMENT 'Icon Type: 1 = CSS Class, 2 = Raw Markup',
     active        TINYINT(1)   NOT NULL DEFAULT TRUE
     COMMENT 'Whether the node is active (will be set to false on deletion)',
-    selected      TINYINT(1)   NOT NULL DEFAULT FALSE
-    COMMENT 'Whether the node is selected/checked by default',
     disabled      TINYINT(1)   NOT NULL DEFAULT FALSE
     COMMENT 'Whether the node is enabled',
     KEY tbl_tree_NK1 (root),

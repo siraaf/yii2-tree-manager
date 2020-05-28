@@ -27,7 +27,6 @@ trait TreeTrait
      */
     public static $boolAttribs = [
         'active',
-        'selected',
         'disabled',
     ];
 
@@ -35,7 +34,6 @@ trait TreeTrait
      * @var array the default list of boolean attributes with initial value = `false`
      */
     public static $falseAttribs = [
-        'selected',
         'disabled',
     ];
 
@@ -155,16 +153,6 @@ trait TreeTrait
     public function isActive()
     {
         return $this->parse('active');
-    }
-
-    /**
-     * Validate if the node is selected
-     *
-     * @return boolean
-     */
-    public function isSelected()
-    {
-        return $this->parse('selected', false);
     }
 
     /**
@@ -305,7 +293,6 @@ trait TreeTrait
             $iconAttribute => Yii::t('kvtree', 'Icon'),
             $iconTypeAttribute => Yii::t('kvtree', 'Icon Type'),
             'active' => Yii::t('kvtree', 'Active'),
-            'selected' => Yii::t('kvtree', 'Selected'),
             'disabled' => Yii::t('kvtree', 'Disabled'),
         ];
         if (!$treeAttribute) {

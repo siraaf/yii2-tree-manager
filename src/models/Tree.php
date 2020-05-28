@@ -22,7 +22,6 @@ use yii\db\ActiveRecord;
  * @property string $icon
  * @property integer $icon_type
  * @property boolean $active
- * @property boolean $selected
  * @property boolean $disabled
  *
  * @method initDefaults()
