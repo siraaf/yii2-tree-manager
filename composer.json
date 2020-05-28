@@ -1,5 +1,5 @@
 {
-    "name": "kartik-v/yii2-tree-manager",
+    "name": "siraaf/yii2-tree-manager",
     "description": "An enhanced tree management module with tree node selection and manipulation using nested sets.",
     "keywords": [
         "bootstrap",
