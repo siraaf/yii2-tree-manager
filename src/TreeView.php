@@ -1078,7 +1078,7 @@ HTML;
             /**
              * @var Tree $node
              */
-            if (!$this->isAdmin || !$this->showInactive && !$node->isActive()) {
+            if (!$this->showInactive && !$node->isActive()) {
                 continue;
             }
             /** @noinspection PhpUndefinedVariableInspection */
