@@ -190,7 +190,7 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
      */
     ?>
     <div class="kv-detail-heading">
-        <?php if (empty($inputOpts['disabled']) || ($isAdmin && $showFormButtons)): ?>
+        <?php if ($isAdmin && $showFormButtons): ?>
             <div class="float-right pull-right">
                 <?= Html::resetButton(
                     ArrayHelper::getValue($nodeViewButtonLabels, 'reset', $resetTitle),
