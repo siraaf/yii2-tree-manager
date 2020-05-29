@@ -182,7 +182,7 @@ ul.kv-tree, .kv-tree ul {
 
 .kv-tree > li:last-child > ul,
 .kv-parent ul li:last-child > ul {
-    box-shadow: -5px 0 0 #fff;
+    box-shadow: 5px 0 0 #fff;
 }
 
 .kv-tree > li:last-child ul,
