@@ -88,7 +88,7 @@ php yii migrate/up --migrationPath=@vendor/kartik-v/yii2-tree-manager/src/migrat
 
 Alternatively, you can execute the SQL script to generate your DB structure. Copy and modify the `migrations/tree.sql` file (a MySQL example), to create the table `tbl_tree` (or for any table name you need). 
 
->NOTE: You can add columns you need to this table, but you cannot skip/drop any of the columns mentioned in the script. You can choose to rename the `id`, `root`, `lft`, `rgt`, `lvl`, `name`, `icon`, `icon_type` columns if you choose to - but these must be accordingly setup in the module.
+>NOTE: You can add columns you need to this table, but you cannot skip/drop any of the columns mentioned in the script. You can choose to rename the `id`, `root`, `lft`, `rgt`, `lvl`, `name` columns if you choose to - but these must be accordingly setup in the module.
 
 ### Step 2: Setup Model
 

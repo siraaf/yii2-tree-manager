@@ -19,8 +19,6 @@ use yii\db\ActiveRecord;
  * @property string $rgt
  * @property integer $lvl
  * @property string $name
- * @property string $icon
- * @property integer $icon_type
  * @property boolean $active
  *
  * @method initDefaults()
@@ -49,11 +47,6 @@ class Tree extends ActiveRecord
      * @var boolean whether to HTML encode the tree node names.
      */
     public $encodeNodeNames = true;
-
-    /**
-     * @var boolean whether to HTML purify the tree node icon content before saving.
-     */
-    public $purifyNodeIcons = true;
 
     /**
      * @var array activation errors for the node.

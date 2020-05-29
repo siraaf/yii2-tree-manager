@@ -120,8 +120,6 @@ class Module extends \kartik\base\Module
         $this->dataStructure += [
             'keyAttribute' => 'id',
             'nameAttribute' => 'name',
-            'iconAttribute' => 'icon',
-            'iconTypeAttribute' => 'icon_type'
         ];
         $nodeActions = ArrayHelper::getValue($this->treeViewSettings, 'nodeActions', []);
         $nodeActions += [

@@ -96,9 +96,9 @@ trait TreeTrait
          * @var Module $module
          */
         $module = TreeView::module();
-        $nameAttribute = $iconAttribute = $iconTypeAttribute = null;
+        $nameAttribute = null;
         extract($module->dataStructure);
-        $attributes = array_merge([$nameAttribute, $iconAttribute, $iconTypeAttribute], static::$boolAttribs);
+        $attributes = array_merge([$nameAttribute], static::$boolAttribs);
         $rules = [
             [[$nameAttribute], 'required'],
             [$attributes, 'safe'],
@@ -109,15 +109,6 @@ trait TreeTrait
                 'filter',
                 'filter' => function ($value) {
                     return Html::encode($value, false);
-                },
-            ];
-        }
-        if ($this->purifyNodeIcons) {
-            $rules[] = [
-                $iconAttribute,
-                'filter',
-                'filter' => function ($value) {
-                    return HtmlPurifier::process($value);
                 },
             ];
         }
@@ -134,9 +125,7 @@ trait TreeTrait
          * @var Module $module
          */
         $module = TreeView::module();
-        $iconTypeAttribute = null;
         extract($module->dataStructure);
-        $this->setDefault($iconTypeAttribute, TreeView::ICON_CSS);
         foreach (static::$boolAttribs as $attr) {
             $val = in_array($attr, static::$falseAttribs) ? false : true;
             $this->setDefault($attr, $val);
@@ -270,7 +259,7 @@ trait TreeTrait
          */
         $module = TreeView::module();
         $keyAttribute = $nameAttribute = $leftAttribute = $rightAttribute = $depthAttribute = null;
-        $treeAttribute = $iconAttribute = $iconTypeAttribute = null;
+        $treeAttribute = null;
         extract($module->treeStructure + $module->dataStructure);
         $labels = [
             $keyAttribute => Yii::t('kvtree', 'ID'),
@@ -278,8 +267,6 @@ trait TreeTrait
             $leftAttribute => Yii::t('kvtree', 'Left'),
             $rightAttribute => Yii::t('kvtree', 'Right'),
             $depthAttribute => Yii::t('kvtree', 'Depth'),
-            $iconAttribute => Yii::t('kvtree', 'Icon'),
-            $iconTypeAttribute => Yii::t('kvtree', 'Icon Type'),
             'active' => Yii::t('kvtree', 'Active'),
         ];
         if (!$treeAttribute) {

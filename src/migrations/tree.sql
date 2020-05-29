@@ -17,14 +17,10 @@ CREATE TABLE tbl_tree (
     COMMENT 'Nested set right property',
     lvl           SMALLINT(5)  NOT NULL
     COMMENT 'Nested set level / depth',
-    name          VARCHAR(255)  NOT NULL
-    COMMENT 'The tree node name / label',
-    icon          VARCHAR(255)          DEFAULT NULL
-    COMMENT 'The icon to use for the node',
-    icon_type     TINYINT(1)   NOT NULL DEFAULT '1'
-    COMMENT 'Icon Type: 1 = CSS Class, 2 = Raw Markup',
     active        TINYINT(1)   NOT NULL DEFAULT TRUE
     COMMENT 'Whether the node is active (will be set to false on deletion)',
+    name          VARCHAR(255)  NOT NULL
+    COMMENT 'The tree node name / label',
     KEY tbl_tree_NK1 (root),
     KEY tbl_tree_NK2 (lft),
     KEY tbl_tree_NK3 (rgt),
@@ -32,5 +28,4 @@ CREATE TABLE tbl_tree (
     KEY tbl_tree_NK5 (active)
 )
     ENGINE = InnoDB
-    DEFAULT CHARSET = utf8
     AUTO_INCREMENT = 1;

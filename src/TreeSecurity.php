@@ -56,13 +56,10 @@ class TreeSecurity
             'nodeAddlViews' => [],
             'nodeViewButtonLabels' => [],
             'nodeViewParams' => '',
-            'icons' => [],
-            'iconsListShow' => 'text',
-            'iconsList' => [],
             'breadcrumbs' => [],
         ];
         $out = static::getParsedData($defaults, $data, function ($type, $key, $value) {
-            if ($type === 'array' && $key === 'iconsList' && is_array($value)) {
+            if ($type === 'array' && is_array($value)) {
                 $new = [];
                 foreach ($value as $k => $v) {
                     if ($k === '0' || $k === 0) {

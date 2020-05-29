@@ -209,8 +209,6 @@
                     'formAction': self.formAction,
                     'formOptions': self.formOptions,
                     'parentKey': parent,
-                    'iconsListShow': self.iconsListShow,
-                    'iconsList': self.iconsList,
                     'currUrl': self.currUrl,
                     'softDelete': self.softDelete,
                     'showFormButtons': self.showFormButtons,

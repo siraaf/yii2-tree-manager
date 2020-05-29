@@ -71,14 +71,6 @@ class TreeView extends Widget
      */
     const BTN_SEPARATOR = 'separator';
     /**
-     * CSS class based icon
-     */
-    const ICON_CSS = 1;
-    /**
-     * Raw HTML markup based icon
-     */
-    const ICON_RAW = 2;
-    /**
      * @var array the actions for managing, deleting, and moving the tree nodes. The keys must be one of 'manage',
      * 'save', 'remove', and 'move'. Defaults to:
      * ```
@@ -247,42 +239,6 @@ class TreeView extends Widget
      * @var boolean whether to use font awesome icons. Defaults to `false`.
      */
     public $fontAwesome = false;
-
-    /**
-     * @var array settings to edit the icon. The following settings are recognized:
-     * - `show`: _string_, whether to display the icons selection as a list. If set to 'text', the icon will be shown as a
-     *   plain text input along with icon type. If set to `'list'`, a list will be shown. If set to `'none'`, then no
-     *   icon settings will be shown for editing.
-     * - `type`: _string_, the iconTypeAttribute value, defaults to TreeView::ICON_CSS. Should be one of [[ICON_CSS]]
-     *   or [[ICON_RAW]].
-     * - `listData`: _array_, the configuration of the icon list data to be shown for selection. This is mandatory if you
-     *   set `show` to 'list'. You must set the data as `$key => $value` format. The list will be parsed to display
-     *   the icon list and will depend on the `type`.
-     *   - If `type` is set to [[ICON_CSS]], then `$key` will be the icon suffix name and `$value` will be the description
-     *     for the icon. The icon markup will be automatically parsed then based on whether its a glyphicon or font-awesome
-     *     when `fontAwesome` property is `true`. For example:
-     *     ```php
-     *          [
-     *              'folder-close' => 'Folder',
-     *              'file' => 'File',
-     *              'tag' => 'Tag'
-     *          ]
-     *      ```
-     *   - If `type` is set to [[ICON_RAW]]  `$key` is the icon markup to be stored and `$value` is the output markup to
-     *     be displayed as a selection in the list. For example:
-     *     ```php
-     *          [
-     *              '<img src="images/folder.jpg">' => 'Folder',
-     *              '<img src="images/file.jpg">' => 'File',
-     *              '<img src="images/tag.jpg">' => 'Tag',
-     *          ]
-     *     ```
-     */
-    public $iconEditSettings = [
-        'show' => 'text',
-        'type' => self::ICON_CSS,
-        'listData' => [],
-    ];
 
     /**
      * @var array the settings for the tree management toolbar
@@ -600,11 +556,6 @@ HTML;
     protected $_module;
 
     /**
-     * @var mixed the icons list
-     */
-    protected $_nodeIconsList;
-
-    /**
      * @var array the queried tree nodes
      */
     protected $_nodes = [];
@@ -632,11 +583,6 @@ HTML;
         'defaultParentNodeIcon' => ['folder', 'folder', 'folder-close', 'kv-node-closed'],
         'defaultParentNodeOpenIcon' => ['folder-open', 'folder-open', 'folder-open', 'kv-node-opened'],
     ];
-
-    /**
-     * @var string the icons list show type set under iconEditSettings
-     */
-    protected $_iconsListShow;
 
     /**
      * Returns the tree view module
@@ -786,7 +732,6 @@ HTML;
     public function initOptions()
     {
         $isBs4 = $this->isBs4();
-        $this->_iconsListShow = ArrayHelper::getValue($this->iconEditSettings, 'show', 'text');
         if (!$this->_module->treeStructure['treeAttribute']) {
             $this->allowNewRoots = false;
         }
@@ -910,7 +855,6 @@ HTML;
             unset($this->toolbar[self::BTN_CREATE_ROOT]);
         }
         $this->sortToolbar();
-        $this->_nodeIconsList = $this->getIconsList();
     }
 
     /**
@@ -1091,10 +1035,6 @@ HTML;
             $nodeKey = $node->$keyAttribute;
             /** @noinspection PhpUndefinedVariableInspection */
             $nodeName = $node->$nameAttribute;
-            /** @noinspection PhpUndefinedVariableInspection */
-            $nodeIcon = $node->$iconAttribute;
-            /** @noinspection PhpUndefinedVariableInspection */
-            $nodeIconType = $node->$iconTypeAttribute;
 
             $isChild = ($nodeRight == $nodeLeft + 1);
             $indicators = '';
@@ -1146,7 +1086,7 @@ HTML;
                 $indicators . "\n" .
                 '</div>' . "\n" .
                 Html::beginTag('div', ['tabindex' => -1, 'class' => 'kv-node-detail']) . "\n" .
-                $this->renderNodeIcon($nodeIcon, $nodeIconType, $isChild) . "\n" .
+                $this->renderNodeIcon($isChild) . "\n" .
                 Html::tag('span', $nodeName, ['class' => 'kv-node-label']) . "\n" .
                 '</div>' . "\n" .
                 '</div>' . "\n";
@@ -1177,10 +1117,6 @@ HTML;
         if (empty($node)) {
             $node = new $modelClass;
         }
-        $iconTypeAttribute = ArrayHelper::getValue($this->_module->dataStructure, 'iconTypeAttribute', 'icon_type');
-        if ($this->_nodeIconsList !== false) {
-            $node->$iconTypeAttribute = ArrayHelper::getValue($this->iconEditSettings, 'type', self::ICON_CSS);
-        }
         $url = Yii::$app->request->url;
         $manageData = TreeSecurity::parseManageData([
             'formOptions' => $this->nodeFormOptions,
@@ -1189,8 +1125,6 @@ HTML;
             'formAction' => $this->nodeActions[Module::NODE_SAVE],
             'currUrl' => $url,
             'isAdmin' => $this->isAdmin,
-            'iconsListShow' => $this->_iconsListShow,
-            'iconsList' => $this->_nodeIconsList,
             'softDelete' => $this->softDelete,
             'allowNewRoots' => $this->allowNewRoots,
             'showFormButtons' => $this->showFormButtons,
@@ -1257,8 +1191,6 @@ HTML;
             'isAdmin' => $this->isAdmin,
             'showInactive' => $this->showInactive,
             'softDelete' => $this->softDelete,
-            'iconsListShow' => $this->_iconsListShow,
-            'iconsList' => $this->_nodeIconsList,
             'showFormButtons' => $this->showFormButtons,
             'showIDAttribute' => $this->showIDAttribute,
             'showNameAttribute' => $this->showNameAttribute,
@@ -1395,22 +1327,12 @@ HTML;
     /**
      * Render the default node icon markup
      *
-     * @param string $icon the current node's icon
-     * @param integer $iconType the current node's icon type, must be one of:
-     * - `TreeView::ICON_CSS` or `1`: if the icon css class suffix name is stored in $icon.
-     * - `TreeView::ICON_RAW` or `2`: if the raw icon markup is stored in $icon.
      * @param boolean $child whether child or parent
      *
      * @return string
      */
-    protected function renderNodeIcon($icon, $iconType, $child = true)
+    protected function renderNodeIcon($child = true)
     {
-        if (!empty($icon)) {
-            $options = $child ? $this->childNodeIconOptions : $this->parentNodeIconOptions;
-            $css = $this->iconPrefix . $icon;
-            $icon = $iconType == self::ICON_CSS ? Html::tag('span', '', ['class' => $css]) : $icon;
-            return Html::tag('span', $icon, $options);
-        }
         $content = $this->defaultParentNodeIcon . $this->defaultParentNodeOpenIcon;
         return Html::tag('span', $content, $this->parentNodeIconOptions) .
             Html::tag('span', $this->defaultChildNodeIcon, $this->childNodeIconOptions);
@@ -1489,30 +1411,4 @@ HTML;
         return Html::tag('span', '', $options);
     }
 
-    /**
-     * Renders the markup for the detail form to edit/view the selected tree node
-     *
-     * @return null|array
-     */
-    protected function getIconsList()
-    {
-        if ($this->_iconsListShow != 'list') {
-            return null;
-        }
-        $type = ArrayHelper::getValue($this->iconEditSettings, 'type', self::ICON_CSS);
-        $settings = ArrayHelper::getValue($this->iconEditSettings, 'listData', []);
-        if ($type === self::ICON_RAW) {
-            return $settings;
-        }
-        $newSettings = [
-            '' => '<em>' . Yii::t('kvtree', 'Default') . '</em> ( ' .
-                Html::tag('span', $this->defaultParentNodeIcon, $this->parentNodeIconOptions) . ' / ' .
-                Html::tag('span', $this->defaultParentNodeOpenIcon, $this->parentNodeIconOptions) . ' / ' .
-                Html::tag('span', $this->defaultChildNodeIcon, $this->childNodeIconOptions) . ')',
-        ];
-        foreach ($settings as $suffix => $label) {
-            $newSettings[$suffix] = Html::tag('span', '', ['class' => $this->iconPrefix . $suffix]) . ' ' . $label;
-        }
-        return $newSettings;
-    }
 }
